@@ -1,0 +1,200 @@
+<!-- 
+	Author: 		Chad Bentz
+	URL: 			studentwebs.kutztown.edu/cbent023/cis242/passengerformV2.htm
+	Class:          Cis242-010,	Fall 2006
+	Instructor:		Dr. Tan
+	Due Date: 		Tuesday, October 17th, 2006
+	Assignment:	    #5
+	Browsers Tested: Internet Explorer Version 6.0.2900 w/ SP2, FireFox Version 1.5.0.7
+	Description:	A form for a travel agency that will take info and error check the input using
+	                regular expressions for advanced style checking.  processformV2.htm is also used
+	                to process the query string submitted from the passengerformV2	
+//-->
+
+<html>
+<head>
+<title>Travel Agency Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="javascript" type="text/javascript"><!--
+
+function checkValues()
+{
+
+    var str = document.getElementById('name').value;
+    var pattern = /^[A-Z]{1,},\s\S{1,}$/;  
+    //alert(str.search(pattern));
+	//Verfy that the user has entered a valid name (BENTZ, Chad)
+	if (str.search(pattern) == -1)
+	  {
+		alert("Please fill out a valid Name (EX: BENTZ,<SPACE>Chad) ");
+		return false;
+	  }
+	  
+    var str = document.getElementById('phone').value;
+    var pattern = /^\d{3}-\d{3}-\d{4}$/;  //
+	//Verfy that the user has entered a valid phone number	   
+	 if (str.search(pattern) == -1)
+	   {
+		alert("Please fill out a valid Phone Number (EX: 555-555-1234) ");
+		return false;
+	   }
+
+    var str = document.getElementById('email').value;
+    var pattern = /^\S{1,}@\S{2,}\.\S{3}$/;  //
+	//Verfy that the user has entered a valid email
+	 if (str.search(pattern) == -1) 
+	   {
+		alert("Please fill out a valid Email (EX: chad@cool.com) ");
+		return false;
+	   }
+	   
+	   
+	//Verfy that the user has entered a destination
+	 if (
+		document.getElementById("male").checked == false &&
+		document.getElementById("female").checked == false  )
+	  {
+		alert("Please Select A Gender");
+		return false;
+	  } 
+
+	 //////////VERIFY THAT BETWEEN 1 and 3 CHECK BOX OPTIONS ARE SELECTED 
+ 	  var numOpt = new Number();	
+	  for(var k=1; k<5; k++)
+	   {
+	     if(document.getElementById("options"+k).checked) numOpt++;
+	   }
+	   if(numOpt == 0){
+	    alert("You must select at least one option");
+	   	return false;
+	   	}
+	   if(numOpt == 4){
+	    alert("Sorry, our agency only allows up to three travel options");	   
+		return false;
+		}
+
+	//Verfy that the user has entered a Cost
+	 if( document.form1.cost.selectedIndex == 0)
+		{
+		  alert("Please Select A Max Cost");
+		  return false;		
+		}
+	
+ 	//Adapted from http://javascript.internet.com/page-details/limit-characters-and-lines.html
+ 	var newlineCtr = 0;//Number of newlines
+ 	for (var i = 0; i < document.getElementById("comments").value.length; i++)
+	{
+		var strChar = document.getElementById("comments").value.substring(i, i + 1);
+		if (strChar == '\n') newlineCtr++;
+    }	
+ 	 	
+ 	if (newlineCtr > 4) // if more than 5 lines
+		   alert("Comments are limited to 5 lines, Please re-submit");
+	
+	
+	else return true;	
+}
+
+
+//This function is called when the button named "Submit"
+//is pressed.  It calls checkValues which will validate
+//the form, and if it passes validation, then force the 
+//form to submit and cause the form' action event.
+function submitform()
+{
+	//As long as no errors on the form SUBMIT it
+		if( checkValues() )
+    		document.form1.submit(); //force the form to submit
+}
+
+
+//--></script>
+</head>
+
+<!--background = lightblue//-->
+<!--When the page loads then set focus and reset all fields//-->
+<body style="text-align:left "bgcolor="#0099CC"
+     onload="javascript: document.getElementById('name').focus(); document.getElementById('form1').reset();">
+   
+<h1 align=center> Travel Package Form</h1>
+
+<!-- Travel Agency Form//-->
+  <!-- When the form loads, set focus and clear form//-->
+<form name="form1" id="form1" method="get" action = "processformV2.htm">
+
+<!-- Table with no boarders for NEATNESS//-->
+<table border='0' cellspacing='0' cellpadding='0' align=center>
+	<tr><!-- TEXT FIELD //-->
+		<td>Name: </td>
+		<td><input type="text" name="name" id="name" size="20">(ex: LASTNAME, Firstname)</td>
+	</tr>
+
+	<tr><!-- TEXT FIELD //-->
+		<td>Phone: </td>
+		<td><input type="text" name="phone" id="phone" size="20">(ex: 333-555-6789)</td>
+	</tr>
+
+	<tr><!-- TEXT FIELD //-->
+		<td>Email: </td>
+		<td><input type="text" name="email" id="email" size="20">(ex: chad@cool.com)</td>
+	</tr>
+
+	<tr><!-- RADIO BUTTONS //-->
+		<td>Gender: </td>
+		<td><input type="radio" name="gender" value="Male" id="male">
+  			Male
+  			<input type="radio" name="gender" value="Female" id="female">
+  			Female
+		</td>
+	</tr>
+
+	<tr><!-- CHECK BOXES //-->
+		<td>Options: </td>
+		<td> 
+		      <input type="checkbox" name="options1" id="options1" value="Flight">
+          Flight Included
+          <br><input type="checkbox" name="options2" id="options2" value="Transportation">
+          Transportation Included
+		  <br><input type="checkbox" name="options3" id="options3" value="Meals">
+          Meals Included
+		  <br><input type="checkbox" name="options4" id="options4" value="Insurance">
+          Travel Insurance
+        </td>
+	</tr>
+
+
+	<tr><!-- DROP DOWN SELECTION BOX //-->
+		<td>Max Cost: </td>
+		<td>
+			<select name="cost">
+  			<option value=0>Choose..</option>
+  			<option value=1000>$1000</option>
+  			<option value=2000>$2000</option>
+  			<option value=3000>$3000</option>
+ 			<option value=4000>$4000</option>
+  			<option value=5000>$5000</option>
+			</select>
+		</td>
+
+	<tr><!-- TEXTAREA For up to 5 lines of comments //-->
+		<td>Comments: </td>
+		<td>
+			<textarea name="comments" id="comments" rows="6" cols="50" value=""></textarea></p>
+		</td>
+	</tr>
+		
+</table>
+
+<br>
+<br>
+<br>
+
+<!-- not a submit, rather a button called submit//-->
+ <center>
+  <input type="button" value="Submit"
+         onclick="javascript: submitform()" >
+  <input type="reset">
+ </center>
+</form>
+</body>
+</html><!-- Close of Webpage //-->

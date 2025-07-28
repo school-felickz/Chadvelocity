@@ -1,0 +1,134 @@
+<!-- 
+	Author: 	Chad Bentz
+	URL: 		cis.kutztown.edu\~cbent023\travel\frames\gnomeshop\gnomeshop.htm
+	Class:          Cis242-010,	Fall 2006
+	Instructor:	Dr. Tan
+	Due Date: 	Final Project (shopping cart = Due November 21, 2006)
+	Assignment:	Final Project
+	Browsers Tested: Internet Explorer Version 6.0.2900 w/ SP2, FireFox Version 1.5.0.7
+	Description:	This page implements the catalog for all the TravelGnome Products Offered.	
+//-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="javascript"><!--
+
+//Function to dynamically display text into <div> innerHTML tag passed into function
+//If the function is called again once it is displayed, the text is hidden.
+function display(div)
+{
+  if(document.getElementById(div).innerHTML == "" )
+	{
+
+		switch(div)
+		{
+			case "desc1":	 
+			  document.getElementById(div).innerHTML =  "<font color=green >100% Pure Spring Water<br>"+
+								    "Gnome Approved! </font>";
+			break;
+			case "desc2":	 
+			  document.getElementById(div).innerHTML =  "<font color=green >Holds 18 oz.<br>"+
+								    "Spill-Proof<br>"+
+  								    "Dishwasher Safe</font>";
+			break;
+			case "desc3":	 
+			  document.getElementById(div).innerHTML =  "<font color=green >100% cotton shirt<br>"+
+  								    "Size: XL</font>";
+			break;
+			case "desc4":	 
+			  document.getElementById(div).innerHTML =  "<font color=green >Glass Holiday Ornament <br>"+
+  								    "Collectors Edition!</font>";
+			break;
+
+
+		}
+	}
+  else
+   document.getElementById(div).innerHTML = "";
+}
+
+//--></script>
+</head>
+
+<!--background = white//-->
+<body style="text-align:left" bgcolor="#FFFFFF">
+   
+<h1 align=center>Travel Gnome Gift Shop</h1>
+
+<!-- Table which holds the Catalog of items //-->
+<table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="727" id="AutoNumber1">
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc1');">
+    <img src="images/GnomeBottledWater.jpg" width="120" height="82"></a></td>
+    <td width="176"><a href="javascript:display('desc1');">Travel Gnome Bottled Water</a></td>
+    <td width="179"><div id="desc1"></div></td>
+    <td width="97">&nbsp;$1</td>
+    <td width="106">
+    <!-- Mini form to submit pid to the shopping cart object as an Add //-->
+    <!-- Since this is a tangible product, multiple quantites can be purchased//-->
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='23'>
+                     <input type='textarea' name='qty' value='1' size='3'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc2');">
+    <img src="images/GnomeMug.jpg" width="116" height="79"></a></td>
+    <td width="176"><a href="javascript:display('desc2');">Travel Gnome Mug</a></td>
+    <td width="179"><div id="desc2"></div></td>
+    <td width="97">&nbsp;$8</td>
+    <td width="106">&nbsp;<p>
+    <!-- Mini form to submit pid to the shopping cart object as an Add //-->
+    <!-- Since this is a tangible product, multiple quantites can be purchased//-->
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='24'>
+                     <input type='textarea' name='qty' value='1' size='3'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc3');">
+    <img src="images/GnomeShirt.jpg" width="119" height="82"></a></td>
+    <td width="176"><a href="javascript:display('desc3');">Travel Gnome T-Shirt</a></td>
+    <td width="179"><div id="desc3"></div></td>
+    <td width="97">&nbsp;$16</td>
+    <td width="106">&nbsp;<p>
+    <!-- Mini form to submit pid to the shopping cart object as an Add //-->
+    <!-- Since this is a tangible product, multiple quantites can be purchased//-->
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='25'>
+                     <input type='textarea' name='qty' value='1' size='3'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc4');">
+    <img src="images/GnomeOrnament.jpg" width="119" height="82"></a></td>
+    <td width="176"><a href="javascript:display('desc4');">Travel Gnome Ornament</a></td>
+    <td width="179"><div id="desc4"></div></td>
+    <td width="97">&nbsp;$12</td>
+    <td width="106">&nbsp;<p>
+    <!-- Mini form to submit pid to the shopping cart object as an Add //-->
+    <!-- Since this is a tangible product, multiple quantites can be purchased//-->
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='26'>
+                     <input type='textarea' name='qty' value='1' size='3'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+</table>
+
+
+</body>
+</html><!-- Close of Webpage //-->
+
+
+
+
+
+
+
+

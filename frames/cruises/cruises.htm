@@ -1,0 +1,123 @@
+<!-- 
+	Author: 		Chad Bentz
+	URL: 			cis.kutztown.edu\~cbent023\travel\frames\cruises\cruises.htm
+	Class:          Cis242-010,	Fall 2006
+	Instructor:		Dr. Tan
+	Due Date: 		Final Project
+	Assignment:	    Final Project
+	Browsers Tested: Internet Explorer Version 6.0.2900 w/ SP2, FireFox Version 1.5.0.7
+	Description:	This page implements the catalog for all the Cruises offered.	
+//-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="javascript"><!--
+
+//Function to dynamically display text into <div> innerHTML tag passed into function
+//If the function is called again once it is displayed, the text is hidden.
+function display(div)
+{
+  if(document.getElementById(div).innerHTML == "" )
+	{
+
+		switch(div)
+		{
+			case "desc1":	 
+			  document.getElementById(div).innerHTML =  "Cruise Line: Carnival <br>"+
+			  					"Room Type: Suite <br>"+
+			  					"Meals: Included <br>"+
+			  					"Pool: Yes <br>"+ 
+  								"Days: 7";
+			break;
+			case "desc2":	 
+			  document.getElementById(div).innerHTML =  "Cruise Line: RoyalCaribbean<br>"+
+								 "Room Type: Suite <br>"+
+			  					"Meals: Extra <br>"+
+			  					"Pool: Yes <br>"+ 
+  								"Days: 4";
+			break;
+			case "desc3":	 
+			  document.getElementById(div).innerHTML =  "Cruise Line: Carnival <br>"+
+								"Room Type: Suite <br>"+
+			  					"Meals: Included <br>"+
+			  					"Pool: Yes <br>"+
+  								"Days: 5";
+			break;
+			case "desc4":	 
+			  document.getElementById(div).innerHTML =  "Cruise Line: Carnival <br>"+
+								"Room Type: Suite <br>"+
+			  					"Meals: Included <br>"+
+			  					"Pool: Yes <br>"+
+  								"Days: 11";
+			break;
+		}
+	}
+  else
+   document.getElementById(div).innerHTML = "";
+}
+
+//--></script>
+</head>
+
+<!--background = white//-->
+<body style="text-align:left" bgcolor="#FFFFFF">
+   
+<h1 align=center>Cruises</h1>
+
+<!-- Table which holds the Catalog of items //-->
+<table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="735" id="AutoNumber1">
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc1');"><img src="images/alaska.jpg" width="104" height="69"></a></td>
+    <td width="176"><a href="javascript:display('desc1');">Alaskan Cruise</a></td>
+    <td width="179"><div id="desc1"></div></td>
+    <td width="97">&nbsp;$1299</td>
+    <td width="106">
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='19'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc2');"><img src="images/bahamas.jpg" width="104" height="69"></a></td>
+    <td width="176"><a href="javascript:display('desc2');">Bahamian Cruise</a></td>
+    <td width="179"><div id="desc2"></div></td>
+    <td width="97">&nbsp;$899</td>
+    <td width="106">&nbsp;<p>
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='20'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc3');"><img src="images/hawaii.jpg" width="104" height="69"></a></td>
+    <td width="176"><a href="javascript:display('desc3');">Hawaian Cruise</a></td>
+    <td width="179"><div id="desc3"></div></td>
+    <td width="97">&nbsp;$1099</td>
+    <td width="106">&nbsp;<p>
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='21'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc4');"><img src="images/mexico.jpg" width="104" height="69"></a></td>
+    <td width="176"><a href="javascript:display('desc4');">Mexican Cruise</a></td>
+    <td width="179"><div id="desc4"></div></td>
+    <td width="97">&nbsp;$1289</td>
+    <td width="106">&nbsp;<p>
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='22'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+</table>
+
+
+</body>
+</html><!-- Close of Webpage //-->

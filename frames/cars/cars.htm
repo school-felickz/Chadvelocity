@@ -1,0 +1,102 @@
+<!-- 
+	Author: 		Chad Bentz
+	URL: 			cis.kutztown.edu\~cbent023\travel\frames\cars\cars.htm
+	Class:          Cis242-010,	Fall 2006
+	Instructor:		Dr. Tan
+	Due Date: 		Final Project
+	Assignment:	    Final Project
+	Browsers Tested: Internet Explorer Version 6.0.2900 w/ SP2, FireFox Version 1.5.0.7
+	Description:	This page implements the catalog for all the Car Rentals offered.	
+//-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="javascript"><!--
+
+//Function to dynamically display text into <div> innerHTML tag passed into function
+//If the function is called again once it is displayed, the text is hidden.
+function display(div)
+{
+  if(document.getElementById(div).innerHTML == "" )
+	{
+
+		switch(div)
+		{
+			case "desc1":	 
+			  document.getElementById(div).innerHTML =  "Make: Nissan<br>"+ 
+  								"Horsepower: 280 <br>"+
+  								"Convertible: Yes <br>"+
+  								"Seats: 2 ";
+			break;
+			case "desc2":	 
+			  document.getElementById(div).innerHTML =  "Make: Hummer<br>"+ 
+  								"Horsepower: 230 <br>"+
+  								"Convertible: No<br>"+
+  								"Seats: 5 ";
+			break;
+			case "desc3":	 
+			  document.getElementById(div).innerHTML =  "Make: Ford<br>"+ 
+  								"Horsepower: 380 <br>"+
+  								"Convertible: No <br>"+
+  								"Seats: 5  ";
+			break;
+		}
+	}
+  else
+   document.getElementById(div).innerHTML = "";
+}
+
+//--></script>
+
+</head>
+
+<!--background = white//-->
+<body style="text-align:left" bgcolor="#FFFFFF">
+   
+<h1 align=center> Car Rentals</h1>
+
+<!-- Table which holds the Catalog of items //-->
+<table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="745" id="AutoNumber1">
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc1');"><img src="images/350z.jpg" width="104" height="69"></a></td>
+    <td width="216"><a href="javascript:display('desc1');">Hertz: Nissan 350Z</a></td>
+    <td width="171"><div id="desc1"></div></td>
+    <td width="46">&nbsp;$89</td>
+    <td width="108">
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='16'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc2');"><img src="images/h3.jpg" width="104" height="69"></a></td>
+    <td width="216"><a href="javascript:display('desc2');">Dollar: Hummer H3</a></td>
+    <td width="171"><div id="desc2"></div></td>
+    <td width="46">&nbsp;$59</td>
+    <td width="108">&nbsp;<p>
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='17'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+  <tr>
+    <td width="112">
+    <a href="javascript:display('desc3');"><img src="images/shelby.jpg" width="104" height="69"></a></td>
+    <td width="216"><a href="javascript:display('desc3');">Alamo: Shelby GHT</a></td>
+    <td width="171"><div id="desc3"></div></td>
+    <td width="46">&nbsp;$99</td>
+    <td width="108">&nbsp;<p>
+    <form method=get action='../../php/cart.php'>
+                     <input type='hidden' name='pid' value='18'>
+                     <input type='hidden' name='qty' value='1'>
+                     <input type='submit' name='add' value='Add To Cart' ></form></td>
+  </tr>
+</table>
+
+
+</body>
+</html><!-- Close of Webpage //-->

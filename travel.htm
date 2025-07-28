@@ -1,0 +1,191 @@
+<!-- 
+	Author: 		Chad Bentz
+	URL: 			cis.kutztown.edu/~cbent023/travel/travel.htm
+	Cis242-010, 	Fall 2006
+	Instructor:		Dr. Tan
+	Due Date: 		End of semester, (user interface = November 2, 2006)
+	Assignment: 	Final Project
+	Description:	Design and Implement a Travel/Vaction Site utilizing a catalog, shopping cart while
+	                storing data in mySQL databases and using php server code.
+	Credit:   	The graphical images for the entire site, css,javascript, and html for the main menu 
+			are based off of travelocity.com code.  I in no way intend to make any profit off of this
+			site and am maintaining it for learning purposes only.
+	
+-->
+
+<html>
+<head>
+<title>CIS242-010   </title>
+
+<link rel="stylesheet" type="text/css" media="screen,all" href="nav.css" id="headfootcss" />
+
+<script language="javascript"><!--
+//JAVASCRIPT CODE AND CSS USED FROM TRAVELOCITY.COM
+navTimer = null;
+currentNav = 0;
+o_navigator = navigator.userAgent
+var isIE5 = (o_navigator.indexOf("MSIE 5") > -1) ? 1 : 0;
+var isMac = (o_navigator.indexOf("Mac") > -1) ? 1 : 0;
+var isIE50 = (o_navigator.indexOf("MSIE 5.0") > -1) ? 1 : 0;
+var isIE52 = (o_navigator.indexOf("MSIE 5.2") > -1) ? 1 : 0;
+var isNN6 = (o_navigator.indexOf("Netscape6") > -1) ? 1 : 0;
+var isDOM = (document.getElementById) ? 1 : 0;
+
+function mainNavOver(o_div){
+	if(isDOM&&!isNN6&&!isIE52&&!isIE50){
+		if(currentNav)currentNav.className = "";
+		clearTimeout(navTimer);
+		o_div.className="navOver";
+	}
+}
+function mainNavOut(o_div){
+	if(isDOM&&!isNN6&&!isIE52&&!isIE50){
+		currentNav = o_div;
+		navTimer = setTimeout('currentNav.className=""',1);
+	}
+}
+//Show the popup
+function launchWindow(url,w,h){
+	winName = "_new"
+	if (!h)popHeight = screen.availHeight - 100;
+	else popHeight = h;
+	winParams = 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=' + w + ',height=' + popHeight;
+	newwin = window.open(url, winName, winParams);
+	newwin.focus();
+}
+
+//--></script>
+
+</head>
+<!-- Background Color is Blue -->
+<body bgcolor="#003366">  
+
+
+<!-- This site is designed to be a spoof of travelocity.com, all credit goes to Travelocity.com for the user interface menu //-->
+
+<!-- Header //-->
+<div id="header">
+	<a href="http://cis.kutztown.edu/~cbent023/travel/travel.htm">
+    <img id="logo" alt="Chadvelocity" src=images/hdr_tcy_logo_hrz.gif border=0 width="189" height="58"></a> 
+	
+  <div class="personalbox">
+    <h2>Welcome to Chadvelocity! <a href="./php/customer.php" target="_bottomframe">Join 
+      now</a></h2>
+    Already a member?&nbsp;<a  style="color:#fff;" href=".">Sign 
+    in</a></div>
+
+	<div class="clear"></div> 
+	 <div id="navServices">
+		
+    <ul>
+      <li><a href="php/buildProductDB.php" target="_bottomframe">Customer 
+        Care</a>|</li>
+      <li><a href="php/cart.php" target="_bottomframe">My 
+        Cart</a></li>
+    </ul>
+	</div>
+	<p id="skipNav"><a href="#skip">Skip navigation and go to content</a></p>
+
+<!-- Top Menu //-->	
+  <div id="mainNav"> 
+    <div id="mainNavmessage"><span></span></div>
+    <div id="mainNavContent"> 
+<!-- Home //-->
+      <div id="currentNav" onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/home/home.htm" target="_bottomframe">
+	  Home</a><br />
+        <ul>
+          <li><a href="frames/home/about.htm" target="_bottomframe">
+            About the Designer</a></li>
+          <li><a href="frames/home/courseinfo.htm" target="_bottomframe">
+            Course Information</a></li>
+          <li><a href="frames/home/revisions.htm" target="_bottomframe"> 
+            Project Revisions</a></li>
+          <li><a href="frames/home/tan.htm" target="_bottomframe">
+		    Meet the Professor</a></li>
+          <li><a href="." target="_bottomframe"> 
+            Directory Structure</a></li>
+        </ul>
+      </div>
+<!-- Packages //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/packages/packages.htm" target="_bottomframe">
+	  Packages</a><br />
+        <ul>
+          <li ><a href="frames/packages/packages.htm" target="_bottomframe">
+            All Packages</a></li>
+          <li><a href="frames/packages/packages.htm" target="_bottomframe"> 
+            Deals</a></li>
+        </ul>
+      </div>
+<!-- destinations //-->
+	<div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/destinations/destinations.htm" target="_bottomframe">
+	  Destinations</a><br />
+        <ul>
+          <li ><a href="frames/destinations/destinations.htm" target="_bottomframe">
+            All Packages</a></li>
+          <li><a href="frames/destinations/destinations.htm" target="_bottomframe"> 
+            Deals</a></li>
+        </ul>
+      </div>
+<!-- flights //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/flights/flights.htm" target="_bottomframe">
+	  Flights</a><br />
+        <ul>
+          <li ><a href="frames/flights/flights.htm" target="_bottomframe"> 
+           All Flights</a></li>
+          <li><a href="frames/flights/flights.htm" target="_bottomframe"> 
+           Deals</a></li>
+        </ul>
+      </div>
+<!-- Hotels //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/hotels/hotels.htm" target="_bottomframe">
+	  Hotels</a><br />
+        <ul>
+          <li ><a href="frames/hotels/hotels.htm" target="_bottomframe"> 
+            All Hotels</a></li>
+          <li><a href="frames/hotels/hotels.htm" target="_bottomframe"> 
+            Deals</a></li>
+        </ul>
+      </div>
+<!-- Cars //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/cars/cars.htm" target="_bottomframe">
+	  Cars</a><br />
+        <ul>
+          <li ><a href="frames/cars/cars.htm" target="_bottomframe"> 
+            All Cars</a></li>
+          <li><a href="frames/cars/cars.htm" target="_bottomframe"> 
+            Deals</a></li>
+        </ul>
+      </div>
+<!-- Cruises //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/cruises/cruises.htm" target="_bottomframe">
+	  Cruises</a><br />
+        <ul>
+          <li><a href="frames/cruises/cruises.htm" target="_bottomframe">
+            All Cruises</a></li>
+          <li><a href="frames/cruises/cruises.htm" target="_bottomframe">
+            Deals</a></li>
+        </ul>
+      </div>
+<!-- Gnome Shop //-->
+      <div onmouseover="mainNavOver(this)" onmouseout="mainNavOut(this)"><a href="frames/gnomeshop/gnomeshop.htm" target="_bottomframe">
+	  Gnome</a><br />
+        <ul>
+          <li><a href="frames/gnomeshop/gnomeshop.htm" target="_bottomframe">
+		  The Gnome Shop</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Inner frame to display cataloges... defaults to home.htm //-->
+<iframe name="_bottomframe" width="763" height="420" src="frames/home/home.htm">
+        Your browser does not support inline frames or is currently configured not to display inline frames.</iframe></p>
+
+<div id="footer">
+<font color="#FFFFFF">© 1996-2006 Travelocity.com LP. All rights reserved.<br>
+Travelocity and the Stars Design are trademarks of Travelocity.com LP.<br>
+Use of this Web site is for SCHOOL PROJECT DEMONSTRATION ONLY.
+</font>
+</div>
+</body>
+</html>

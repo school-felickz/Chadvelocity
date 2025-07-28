@@ -1,0 +1,26 @@
+0, Hawaiian Relaxation Package, Package, 1299.00, ../frames/packages/images/hawaii.jpg
+0, Carribean Adventure Package, Package, 1299.00, ../frames/packages/images/caribbean.jpg
+0, Las Vegas Fun Package, Package, 1299.00, ../frames/packages/images/lasvegas.jpg
+0, Whistler Ski Package, Package, 1299.00, ../frames/packages/images/ski.jpg
+0, Disneyland California, Destination, 199.00, ../frames/destinations/images/disneyland.jpg
+0, San Francisco California, Destination, 199.00, ../frames/destinations/images/sanfrancisco.jpg
+0, Las Vegas Nevada, Destination, 299.00, ../frames/destinations/images/lasvegas.jpg
+0, New York New York, Destination, 199.00, ../frames/destinations/images/newyork.jpg
+0, American Airlines, Flight, 349.00, ../frames/flights/images/AA.gif
+0, United Airlines, Flight, 299.00, ../frames/flights/images/united.gif
+0, AirTran Airlines, Flight, 199.00, ../frames/flights/images/airtran.gif
+0, Sheraton, Hotel, 129.00, ../frames/hotels/images/sheraton.gif
+0, Hyatt, Hotel, 199.00, ../frames/hotels/images/hyatt.gif
+0, Hilton, Hotel, 99.00, ../frames/hotels/images/hilton.gif
+0, Double Tree, Hotel, 89.00, ../frames/hotels/images/doubletree.gif
+0, Hertz: Nissan 350Z, Car, 89.00, ../frames/cars/images/350z.jpg
+0, Dollar: Hummer H3, Car, 59.00, ../frames/cars/images/h3.jpg
+0, Alamo: Shelby GHT, Car, 99.00, ../frames/cars/images/shelby.jpg
+0, Alaskan Cruise, Cruise, 1299.00, ../frames/cruises/images/alaska.jpg
+0, Bahamian Cruise, Cruise, 899.00, ../frames/cruises/images/bahamas.jpg
+0, Hawaian Cruise, Cruise, 1099.00, ../frames/cruises/images/hawaii.jpg
+0, Mexican Cruise, Cruise, 1289.00, ../frames/cruises/images/mexico.jpg
+0, Travel Gnome Bottled Water, Gnome Item, 1.00, ../frames/gnomeshop/images/GnomeBottledWater.jpg
+0, Travel Gnome Mug, Gnome Item, 8.00, ../frames/gnomeshop/images/GnomeMug.jpg 
+0, Travel Gnome T-Shirt, Gnome Item, 16.00, ../frames/gnomeshop/images/GnomeShirt.jpg
+0, Travel Gnome Ornament, Gnome Item, 12.00, ../frames/gnomeshop/images/GnomeOrnament.jpg

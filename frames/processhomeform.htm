@@ -1,0 +1,172 @@
+<!-- 
+	Author: 		 Chad Bentz
+	URL: 			 studentwebs.kutztown.edu/cbent023/cis242/processformV2.htm
+	Class:           Cis242-010,Fall 2006
+	Instructor:		 Dr. Tan
+	Due Date: 		 Tuesday, October 17 2005
+	Assignment:	     #5
+	Browsers Tested: Internet Explorer Version 6.0.2900 w/ SP2, FireFox Version 1.5.0.7
+	Description:	Receives a query string from http://studentwebs.kutztown.edu/cbent023/cis242/passengerformV2.htm , 
+					and outputs the values in plain text removing html encoding and formatting appropriate output.
+
+    QUERY EXAMPLE:
+    					http://studentwebs.kutztown.edu/cbent023/cis242/processformV2.htm?
+    					    name=BENTZ%2C+CHAD&
+    					    phone=111-111-1212&
+    					    email=felickz@aol.com&
+    					    gender=male&    (OR gender=female)
+    					    options1=flight&             //ONLY 3 out of 4 options are passed
+    					    options2=transportation&	 //...
+    					    options3=meals& 			 //...
+    					    options4=insurance&   	 	 //...
+    					    cost=1000&  (OR 2000 OR 3000 OR 4000 OR 5000)
+    					    comments=GC	   (OR comments=A%0D%0AB%0D%0AC%0D%0Aa%0D%0Ab%0D%0Ac) 
+//-->
+
+<html>
+<head>
+<title>Travel Form Received</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="javascript" type="text/javascript"><!--
+
+
+//CODE ADAPTED FROM JOO TAN, KUTZTOWN UNIVERSITY
+var mylocation = document.location.toString();  //Gets the URL string
+var index1 = mylocation.indexOf("?");  //Find first occurance of the '?' 
+									   //Meaning the start of the Query String
+queryString = mylocation.substring(index1 + 1);  //queryString begins with first name
+
+Pairs = new Array();
+Pairs = queryString.split("&");/* Pairs[0] = "name=BENTZ%2C+CHAD", Pairs[1] = "phone=111-111-1212", ...*/
+
+////GET THE PAIRED VALUES////////
+
+nameEN = Pairs[0].split("=");      /* name[0] = "name", name[1] = "BENTZ%2C+CHAD" */
+tempname = nameEN[1]              //FOR IE COMPATABILITY
+Aname =  tempname.split("%2C+"); 
+phone  = Pairs[1].split("=");
+email  = Pairs[2].split("=");
+gender = Pairs[3].split("=");
+optionsA=Pairs[4].split("=");
+var idxnum = 5;        //where to coninue with the array
+optionsB=Pairs[5].split("=");
+//Since we do not know how many options are being passed (between 1 and 3), Extra Processing is needed
+	var cost = new Array();
+	if(optionsB[0] == "cost") 
+  	{
+   		cost = optionsB.concat([]);  //Copy array elements NOT THE OBJECT REFERENCE
+   		optionsB = new Array("","");	
+  	}
+  	else ///IF Two Options passed, Cost cannot be [5] so update the index
+   	   idxnum++;   
+var optionsC = new Array("","");
+if(idxnum == 6) //AKA At least 2 options were passed, then try for Pairs[6] as optionsC
+{
+   optionsC=Pairs[6].split("=");
+	if(optionsC[0] == "cost") 
+	  {
+	   cost = optionsC.concat([]);
+	   optionsC = new Array("","");   //OptionsC is the last since only 3/4 check boxes allowed!
+ 	  }
+ 	 else ///IF Three Options passed, Cost cannot be [6] so update the index
+   	   idxnum++;   
+}
+ 	  
+if(idxnum == 7)      //If cost has not been populated, then split the next array pair
+  {  
+  	cost=Pairs[7].split("=");
+  	idxnum++; // update the idxnum for the next value 
+    comments=Pairs[idxnum].split("="); //use index[8]
+  }
+else  //it equals 6
+ {
+ 	idxnum++;   
+    comments=Pairs[idxnum].split("=");  //use index [7]
+ }
+
+
+//--></script>
+
+</head>
+
+<body bgcolor="#0099CC" >   <!--background = lightblue//-->
+
+<!-- HTML CODE ADAPTED FROM JOO TAN EXAMPLE: 
+http://faculty.kutztown.edu/tan/cis242/datafiles/page2.htm
+ //-->
+
+	<!-- HEADING OF BODY == Form Submitter's first name //-->
+	<h1 align=center> 
+ 	<span>
+ 		<script language="javascript"><!--
+			 //document.writeln(Aname[1].replace('+', ' '));
+			 document.writeln(Aname[1]);
+ 		//--></script>
+ 	</span>
+    , thankyou for submitting a Travel Form!</h1><br>
+
+
+ 	<h3> <!-- DISPLAY OUTPUT SPANS IN A H3 SIZE //-->
+	Name:
+    <span id="spanName" style="color: orange ">
+ 		<script language="javascript"><!--
+ 			//Output the submitter's first name followed by last
+ 			document.getElementById('spanName').innerHTML = Aname[1]+" "+Aname[0].toLowerCase();
+ 		//--></script>
+ 	</span><br>
+ 	Phone: 
+	<span id="spanPhone" style="color: orange ">
+ 		<script language="javascript"><!--
+ 			//Output the phone number as sent
+ 			document.getElementById('spanPhone').innerHTML = phone[1];
+ 		//--></script>
+ 	</span> <br>
+	Email:
+	<span style="color: orange ">
+	 	<script language="javascript"><!--
+		     //Replace %40 Encoding with the @ symbol
+			 document.writeln(email[1].replace('\%40', '@'));
+ 		//--></script>
+	</span><br>
+	Gender: 
+ 	<span style="color: orange ">
+		<script language="javascript"><!--
+			 //output the gender as sent
+			 document.writeln(gender[1]);
+ 		//--></script>
+	</span><br>
+	Options: 
+ 	<span style="color: orange ">
+		<script language="javascript"><!--
+			 //Always output at least one option, if optionsB&C exist output them as well
+			 document.writeln(optionsA[1]);
+			 if(optionsB[0] != "") document.writeln("<br>"+optionsB[1]);
+			 if(optionsC[0] != "") document.writeln("<br>"+optionsC[1]);
+ 		//--></script>
+	</span><br>
+	Cost: 
+ 	<span style="color: orange ">
+		<script language="javascript"><!--
+			  //Add a dollar sign to the cost
+			 document.writeln("$"+cost[1]);
+ 		//--></script>
+	</span><br>
+	Comments:<br> 
+ 	<span style="color: orange ">
+		<script language="javascript"><!--
+			 //Output the comments with cr lf replaced with an html break
+			 document.writeln(comments[1].replace(/%0D%0A/g,'<br>'));
+ 		//--></script>
+	</span><br>
+
+<br>
+<br>
+<CENTER>
+<input type=button value="Edit My Travel Form" onClick="history.go(-1)">
+</CENTER>
+
+</h3>
+
+</body>
+
+</html><!-- Close of Webpage //-->
