@@ -39,7 +39,7 @@ jobs:
           echo "[+] Finished installing opengrep"
     
       - name: "Run Opengrep"
-        run: opengrep scan --metrics=on --sarif-output ./results.sarif .
+        run: opengrep scan --sarif-output ./results.sarif .
 
       - name: "Upload SARIF file"
         uses: github/codeql-action/upload-sarif@v3
